@@ -1,4 +1,4 @@
-using CatalogoAniApi.Comandos.Requisicoes;
+using CatalogoAniApi.Comandos.Requests;
 using CatalogoAniApi.Modelo.Entidades;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -18,12 +18,18 @@ namespace CatalogoAniApi.Controllers
             _mediator = mediator;
         }
 
-        [HttpGet("anime", Name = "ObterAnime")]
-        public async Task<Anime> GetAnime()
+        [HttpGet("v1/anime/todos", Name = "ObterTodosAnimes")]
+        public async Task<IEnumerable<Anime>> GetAnime()
         {
-            var anime = await _mediator.Send(new ObterAnimeRequest(1));
+            var anime = await _mediator.Send(new ObterTodosAnimesRequest());
 
             return anime;
+        }
+
+        [HttpGet("v1/anime", Name = "ObterAnimes")]
+        public async Task<IEnumerable<Anime>> GetAnimes([FromQuery] ObterAnimeRequest obterAnimeRequest)
+        {
+            return await _mediator.Send(obterAnimeRequest);
         }
     }
 }
