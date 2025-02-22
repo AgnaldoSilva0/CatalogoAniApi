@@ -1,14 +1,24 @@
 ﻿using CatalogoAniApi.Comandos.Requests;
 using CatalogoAniApi.Modelo.Entidades;
+using CatalogoAniApi.Repositorio.Repositorios.Interfaces;
 using MediatR;
 
 namespace CatalogoAniApi.Comandos.Handlers
 {
     public class ObterTodosAnimesHandler : IRequestHandler<ObterTodosAnimesRequest, IEnumerable<Anime>>
     {
-        public Task<IEnumerable<Anime>> Handle(ObterTodosAnimesRequest request, CancellationToken cancellationToken)
+        private readonly IRepositorio<Anime> _repositorioAnime;
+
+        public ObterTodosAnimesHandler(IRepositorio<Anime> repositorioAnime)
         {
-            throw new NotImplementedException();
+            _repositorioAnime = repositorioAnime;
+        }
+
+        public async Task<IEnumerable<Anime>> Handle(ObterTodosAnimesRequest request, CancellationToken cancellationToken)
+        {
+            var animes = await _repositorioAnime.ObterTodosAsync();
+
+            return animes;
         }
     }
 }
