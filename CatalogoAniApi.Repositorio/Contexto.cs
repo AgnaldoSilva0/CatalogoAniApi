@@ -7,8 +7,7 @@ namespace CatalogoAniApi.Repositorio
     {
         public DbSet<Anime> Animes { get; set; }
 
-        public Contexto(DbContextOptions<Contexto> options)
-            : base(options)
+        public Contexto(DbContextOptions<Contexto> options) : base(options)
         {
         }
     }

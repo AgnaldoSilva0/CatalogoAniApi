@@ -4,7 +4,7 @@ namespace CatalogoAniApi.Repositorio.Repositorios.Interfaces
 {
     public interface IRepositorio<T> where T : class
     {
-        Task<IEnumerable<T>> BuscarTodosAsync();
+        Task<IEnumerable<T>> ObterTodosAsync();
         Task<T> ObterPorIdAsync(int id);
         Task<IEnumerable<T>> ObterAsync(Expression<Func<T, bool>> predicate);
         Task AdicionarAsync(T entity);
