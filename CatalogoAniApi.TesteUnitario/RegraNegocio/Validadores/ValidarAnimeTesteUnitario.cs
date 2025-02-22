@@ -37,12 +37,7 @@ namespace CatalogoAniApi.TesteUnitario.RegraNegocio.Validadores
         {
             var mensagemDeExcecaoEsperada = "Nome do anime é obrigatório.";
 
-            var excecaoLancada = Assert.Throws<ValidacaoExcecao>(() =>
-            {
-                _validarAnime.Validar(tipoOperacao, anime);
-            });
-
-            Assert.Contains(mensagemDeExcecaoEsperada, excecaoLancada.Message);
+            VerificarValidacaoDeAnime(mensagemDeExcecaoEsperada, tipoOperacao, anime);
         }
 
         [Theory(DisplayName = "Não deve ser permitido inserir ou atualizar um anime com nome com menos que dois caracteres.")]
@@ -51,12 +46,7 @@ namespace CatalogoAniApi.TesteUnitario.RegraNegocio.Validadores
         {
             var mensagemDeExcecaoEsperada = "Tamanho minímo para o campo Nome é de dois caracteres.";
 
-            var excecaoLancada = Assert.Throws<ValidacaoExcecao>(() =>
-            {
-                _validarAnime.Validar(tipoOperacao, anime);
-            });
-
-            Assert.Contains(mensagemDeExcecaoEsperada, excecaoLancada.Message);
+            VerificarValidacaoDeAnime(mensagemDeExcecaoEsperada, tipoOperacao, anime);
         }
 
         [Theory(DisplayName = "Não deve ser permitido inserir ou atualizar um anime com diretor vazio ou nulo.")]
@@ -65,12 +55,7 @@ namespace CatalogoAniApi.TesteUnitario.RegraNegocio.Validadores
         {
             var mensagemDeExcecaoEsperada = "Diretor do anime é obrigatório.";
 
-            var excecaoLancada = Assert.Throws<ValidacaoExcecao>(() =>
-            {
-                _validarAnime.Validar(tipoOperacao, anime);
-            });
-
-            Assert.Contains(mensagemDeExcecaoEsperada, excecaoLancada.Message);
+            VerificarValidacaoDeAnime(mensagemDeExcecaoEsperada, tipoOperacao, anime);
         }
 
         [Theory(DisplayName = "Não deve ser permitido inserir ou atualizar um anime com resumo vazio ou nulo.")]
@@ -79,12 +64,7 @@ namespace CatalogoAniApi.TesteUnitario.RegraNegocio.Validadores
         {
             var mensagemDeExcecaoEsperada = "Resumo do anime é obrigatório.";
 
-            var excecaoLancada = Assert.Throws<ValidacaoExcecao>(() =>
-            {
-                _validarAnime.Validar(tipoOperacao, anime);
-            });
-
-            Assert.Contains(mensagemDeExcecaoEsperada, excecaoLancada.Message);
+            VerificarValidacaoDeAnime(mensagemDeExcecaoEsperada, tipoOperacao, anime);
         }
 
         [Theory(DisplayName = "Não deve ser permitido inserir ou atualizar um anime com resumo com menos de dez caracteres.")]
@@ -93,6 +73,11 @@ namespace CatalogoAniApi.TesteUnitario.RegraNegocio.Validadores
         {
             var mensagemDeExcecaoEsperada = "Tamanho minímo do resumo é de dez caracteres.";
 
+            VerificarValidacaoDeAnime(mensagemDeExcecaoEsperada, tipoOperacao, anime);
+        }
+
+        private void VerificarValidacaoDeAnime(string mensagemDeExcecaoEsperada, TipoOperacao tipoOperacao, Anime anime)
+        {
             var excecaoLancada = Assert.Throws<ValidacaoExcecao>(() =>
             {
                 _validarAnime.Validar(tipoOperacao, anime);
