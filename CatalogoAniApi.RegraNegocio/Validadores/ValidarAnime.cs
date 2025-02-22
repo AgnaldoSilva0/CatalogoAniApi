@@ -33,7 +33,7 @@ namespace CatalogoAniApi.RegraNegocio.Validadores
 
         private void ValidarAtualizacao(Anime anime)
         {
-            ValidarNome(anime.Diretor);
+            ValidarNome(anime.Nome);
             ValidarDiretor(anime.Diretor);
             ValidarResumo(anime.Resumo);
         }
@@ -68,7 +68,7 @@ namespace CatalogoAniApi.RegraNegocio.Validadores
 
             if (resumo.Count() < 10)
             {
-                throw new ValidacaoExcecao("Tamanho minímo do resumo para o campo Nome é de dez caracteres.");
+                throw new ValidacaoExcecao("Tamanho minímo do resumo é de dez caracteres.");
             }
         }
     }
