@@ -1,3 +1,5 @@
+using CatalogoAniApi.RegraNegocio.Interfaces;
+using CatalogoAniApi.RegraNegocio.Validadores;
 using CatalogoAniApi.Repositorio;
 using CatalogoAniApi.Repositorio.Repositorios;
 using CatalogoAniApi.Repositorio.Repositorios.Interfaces;
@@ -10,6 +12,7 @@ builder.Services.AddDbContext<Contexto>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddScoped(typeof(IRepositorio<>), typeof(RepositorioGenerico<>));
+builder.Services.AddScoped(typeof(IValidarAnime), typeof(ValidarAnime));
 
 builder.Services.AddMediatR(config => config.RegisterServicesFromAssemblyContaining<Program>());
 

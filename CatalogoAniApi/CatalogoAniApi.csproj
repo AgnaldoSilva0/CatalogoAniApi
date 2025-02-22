@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CatalogoAniApi.Modelo\CatalogoAniApi.Modelo.csproj" />
+    <ProjectReference Include="..\CatalogoAniApi.RegraNegocio\CatalogoAniApi.RegraNegocio.csproj" />
     <ProjectReference Include="..\CatalogoAniApi.Repositorio\CatalogoAniApi.Repositorio.csproj" />
   </ItemGroup>
 
