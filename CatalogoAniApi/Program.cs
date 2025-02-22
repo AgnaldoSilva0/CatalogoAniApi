@@ -3,6 +3,8 @@ using CatalogoAniApi.RegraNegocio.Validadores;
 using CatalogoAniApi.Repositorio;
 using CatalogoAniApi.Repositorio.Repositorios;
 using CatalogoAniApi.Repositorio.Repositorios.Interfaces;
+using CatalogoAniApi.Servico.Servicos;
+using CatalogoAniApi.Servicos.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +15,7 @@ builder.Services.AddDbContext<Contexto>(options =>
 
 builder.Services.AddScoped(typeof(IRepositorio<>), typeof(RepositorioGenerico<>));
 builder.Services.AddScoped(typeof(IValidarAnime), typeof(ValidarAnime));
+builder.Services.AddScoped(typeof(ILogServico), typeof(LogServico));
 
 builder.Services.AddMediatR(config => config.RegisterServicesFromAssemblyContaining<Program>());
 

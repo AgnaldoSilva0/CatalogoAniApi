@@ -1,6 +1,7 @@
 ﻿using CatalogoAniApi.Comandos.Commands;
 using CatalogoAniApi.Modelo.Entidades;
 using CatalogoAniApi.Modelo.Enumeradores;
+using CatalogoAniApi.Modelo.Excecoes;
 using CatalogoAniApi.RegraNegocio.Interfaces;
 using CatalogoAniApi.Repositorio.Repositorios.Interfaces;
 using MediatR;
@@ -23,7 +24,7 @@ namespace CatalogoAniApi.Comandos.Handlers
             var anime = await _animeRepositorio.ObterPorIdAsync(request.Id);
 
             if (anime == null)
-                throw new NullReferenceException("Anime não encontrado");
+                throw new ValidacaoExcecao("Anime não encontrado");
 
             anime.Nome = request.Nome;
             anime.Diretor = request.Diretor;

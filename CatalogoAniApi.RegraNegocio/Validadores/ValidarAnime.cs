@@ -1,5 +1,6 @@
 ﻿using CatalogoAniApi.Modelo.Entidades;
 using CatalogoAniApi.Modelo.Enumeradores;
+using CatalogoAniApi.Modelo.Excecoes;
 using CatalogoAniApi.RegraNegocio.Interfaces;
 
 namespace CatalogoAniApi.RegraNegocio.Validadores
@@ -41,12 +42,12 @@ namespace CatalogoAniApi.RegraNegocio.Validadores
         {
             if (string.IsNullOrWhiteSpace(nome))
             {
-                throw new Exception("Nome do anime é obrigatório.");
+                throw new ValidacaoExcecao("Nome do anime é obrigatório.");
             }
 
             if (nome.Count() < 2)
             {
-                throw new Exception("Tamanho minímo para o campo Nome é de dois caracteres.");
+                throw new ValidacaoExcecao("Tamanho minímo para o campo Nome é de dois caracteres.");
             }
         }
 
@@ -54,7 +55,7 @@ namespace CatalogoAniApi.RegraNegocio.Validadores
         {
             if (string.IsNullOrWhiteSpace(diretor))
             {
-                throw new Exception("Diretor do anime é obrigatório.");
+                throw new ValidacaoExcecao("Diretor do anime é obrigatório.");
             }
         }
 
@@ -62,12 +63,12 @@ namespace CatalogoAniApi.RegraNegocio.Validadores
         {
             if (string.IsNullOrWhiteSpace(resumo))
             {
-                throw new Exception("Resumo do anime é obrigatório.");
+                throw new ValidacaoExcecao("Resumo do anime é obrigatório.");
             }
 
             if (resumo.Count() < 10)
             {
-                throw new Exception("Tamanho minímo do resumo para o campo Nome é de dez caracteres.");
+                throw new ValidacaoExcecao("Tamanho minímo do resumo para o campo Nome é de dez caracteres.");
             }
         }
     }

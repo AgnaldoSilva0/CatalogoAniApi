@@ -1,5 +1,6 @@
 ﻿using CatalogoAniApi.Comandos.Commands;
 using CatalogoAniApi.Modelo.Entidades;
+using CatalogoAniApi.Modelo.Excecoes;
 using CatalogoAniApi.Repositorio.Repositorios.Interfaces;
 using MediatR;
 
@@ -19,7 +20,7 @@ namespace CatalogoAniApi.Comandos.Handlers
             var anime = await _animeRepository.ObterPorIdAsync(request.Id);
 
             if (anime == null)
-                throw new NullReferenceException("Anime não encontrado");
+                throw new ValidacaoExcecao("Anime não encontrado");
 
             await _animeRepository.DeletarAsync(anime.Id);
         }
